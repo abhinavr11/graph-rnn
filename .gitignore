@@ -4,9 +4,9 @@
 \\
 **/tmp.txt
 
-*.dat
-*.pkl
-*.pickle
+
+
+
 
 figures/
 figures_paper/
@@ -17,7 +17,7 @@ figures_prediction/
 **/build/
 model_save/
 logs/
-graphs/
+
 eval_results/
 tensorboard/
 timing/
