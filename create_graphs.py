@@ -70,7 +70,7 @@ def create(args):
         args.max_prev_node = 80
     elif args.graph_type=='grid':
         graphs = []
-        file_name = 'baking_a_cake_subgraphs.pickle'
+        file_name = 'graph/baking_a_cake_subgraphs.pickle'
         with open(file_name, 'rb') as file:
             graphs = pickle.load(file)
         args.max_prev_node = 26
