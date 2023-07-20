@@ -1,6 +1,6 @@
 import networkx as nx
 import numpy as np
-
+import pickle
 from utils import *
 from data import *
 
@@ -70,10 +70,10 @@ def create(args):
         args.max_prev_node = 80
     elif args.graph_type=='grid':
         graphs = []
-        for i in range(10,20):
-            for j in range(10,20):
-                graphs.append(nx.grid_2d_graph(i,j))
-        args.max_prev_node = 40
+        file_name = 'baking_a_cake_subgraphs.pickle'
+        with open(file_name, 'rb') as file:
+            graphs = pickle.load(file)
+        args.max_prev_node = 26
     elif args.graph_type=='grid_small':
         graphs = []
         for i in range(2,5):
