@@ -77,5 +77,4 @@ output = GRU_plain(input_size=1, embedding_size=args.embedding_size_rnn_output,
                            hidden_size=args.hidden_size_rnn_output, num_layers=args.num_layers, has_input=True,
                            has_output=True, output_size=1).cuda()
 
-test_rnn_epoch(epoch=None, args=args, rnn=rnn, output=output, test_batch_size=16)
-print('Done')
+print(test_rnn_epoch(epoch=None, args=args, rnn=rnn, output=output, test_batch_size=16))
