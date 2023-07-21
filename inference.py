@@ -69,6 +69,8 @@ args = Args()
 os.environ['CUDA_VISIBLE_DEVICES'] = str(args.cuda)
 graphs = create_graphs.create(args)
 args.max_num_node = max([graphs[i].number_of_nodes() for i in range(len(graphs))])
+PATH_RNN = 'model_save/GraphRNN_RNN_grid_4_128_lstm_3000.dat'
+PATH_OUTPUT = 'model_save/GraphRNN_RNN_grid_4_128_output_3000.dat'
 
 rnn = GRU_plain(input_size=args.max_prev_node, embedding_size=args.embedding_size_rnn,
                         hidden_size=args.hidden_size_rnn, num_layers=args.num_layers, has_input=True,
@@ -76,5 +78,8 @@ rnn = GRU_plain(input_size=args.max_prev_node, embedding_size=args.embedding_siz
 output = GRU_plain(input_size=1, embedding_size=args.embedding_size_rnn_output,
                            hidden_size=args.hidden_size_rnn_output, num_layers=args.num_layers, has_input=True,
                            has_output=True, output_size=1).cuda()
+
+rnn.load_state_dict(torch.load(PATH_RNN))
+output.load_state_dict(torch.load(PATH_OUTPUT))
 
 print(test_rnn_epoch(epoch=None, args=args, rnn=rnn, output=output, test_batch_size=16))
